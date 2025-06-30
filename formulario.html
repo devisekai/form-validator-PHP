@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Validador PHP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Validador com PHP</h1>
+    <?php include 'validador.php'; ?>
+
+    <?php if ($sucesso): ?>
+      <p class="sucesso">Formulário enviado com sucesso!</p>
+    <?php elseif ($erros): ?>
+      <ul class="erro">
+        <?php foreach ($erros as $erro): ?>
+          <li><?= $erro ?></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+
+    <form method="post">
+      <label>Nome:</label>
+      <input type="text" name="nome" value="<?= $_POST['nome'] ?? '' ?>" />
+
+      <label>E-mail:</label>
+      <input type="email" name="email" value="<?= $_POST['email'] ?? '' ?>" />
+
+      <label>Senha:</label>
+      <input type="password" name="senha" />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+</body>
+</html>
